@@ -1,4 +1,4 @@
-import { transactionApi } from "@/services/api/transactionApi";
+import { transactionApi } from "@/services/api/transaction-service";
 import { Transaction } from "@/types/transaction";
 import { useCallback, useEffect, useState } from "react";
 
