@@ -3,7 +3,7 @@ import MonthNavigator from "@/components/transactions/month-navigator";
 import TransactionSectionList from "@/components/transactions/transaction-section-list";
 import TransactionSummaryCard from "@/components/transactions/transaction-summary-card";
 import { TransactionService } from "@/services/api/transaction-service";
-import { Transaction } from "@/types/transaction";
+import { Transaction } from "@/shared/types/transaction";
 import { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -24,7 +24,7 @@ export default function TransactionsScreen({
   const fetchTransactions = async () => {
     setLoading(true);
     try {
-      const data = await TransactionService.getAll()
+      const data = await TransactionService.getAll();
       setTransactions(data); // Update the state with the fetched data
     } catch (error) {
       console.error("Error fetching transactions:", error);
