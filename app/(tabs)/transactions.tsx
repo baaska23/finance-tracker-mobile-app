@@ -3,7 +3,7 @@ import MonthNavigator from "@/components/transactions/month-navigator";
 import TransactionSectionList from "@/components/transactions/transaction-section-list";
 import TransactionSummaryCard from "@/components/transactions/transaction-summary-card";
 import { TransactionService } from "@/services/api/transaction-service";
-import { Transaction } from "@/types/transaction";
+import { Transaction } from "@/shared/types/transaction";
 import { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { Button } from "@heroui/react";

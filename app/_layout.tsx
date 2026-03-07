@@ -7,7 +7,8 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 
-import { useColorScheme } from "@/hooks/use-color-scheme";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./providers/query-client";
 
 import { HeroUINativeProvider } from "heroui-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -18,16 +19,21 @@ export const unstable_settings = {
 
 export default function RootLayout() {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <HeroUINativeProvider>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="modal"
-            options={{ presentation: "modal", title: "Modal" }}
-          />
-        </Stack>
-      </HeroUINativeProvider>
-    </GestureHandlerRootView>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider value={DefaultTheme}>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <HeroUINativeProvider>
+            <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen
+                name="modal"
+                options={{ presentation: "modal", title: "Modal" }}
+              />
+            </Stack>
+            <StatusBar style="auto" />
+          </HeroUINativeProvider>
+        </GestureHandlerRootView>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
